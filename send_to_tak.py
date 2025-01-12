@@ -3,11 +3,12 @@ from sensor_simulator import generate_sensor_data
 from cot_generator import generate_cot
 import time
 
-# Replace this with the TAK server endpoint
+# TAK server URL
 TAK_SERVER_URL = "http://localhost:8080/endpoint"
 
+"""Sends a cot to the TAK server"""
 def send_to_tak(cot_message):
-    """Sends a CoT message to the TAK server."""
+    
     headers = {"Content-Type": "application/xml"}
     try:
         response = requests.post(TAK_SERVER_URL, data=cot_message, headers=headers)
@@ -24,4 +25,4 @@ if __name__ == "__main__":
         cot_message = generate_cot(sensor_data)
         print(f"Generated CoT Message: {cot_message}")
         send_to_tak(cot_message)
-        time.sleep(2)  # Send data every 2 seconds
+        time.sleep(2)  
